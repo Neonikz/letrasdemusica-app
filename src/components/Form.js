@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const Form = () => {
+export const Form = ({ setSearchLetter }) => {
 
     //State del form
     const [search, setSearch] = useState({
@@ -29,12 +29,16 @@ export const Form = () => {
             return setError(true);
         }
         setError(false);
+
+        //Enviar datos al state general
+        setSearchLetter(search);
     }
 
 
     return (
         <div className="bg-info">
             <div className="container">
+                    { error && <p className="alert alert-danger text-center p-2">Todos los campos son obligatorios</p> }
                 <div className="row">
                     <form
                         className="col card text-white bg-transparent mb-5 pt-5 pb-2"
